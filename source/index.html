@@ -7,6 +7,15 @@
 </head>
 <body>
 
+<div id="app">
+
+  <div>
+    <a v-for="scene in scenes" v-link="{ path: scene.name }">{{ scene.name }}</a>
+  </div>
+
+  <router-view></router-view>
+</div>
+
 <script src="js/main.<%= jsExt %>"></script>
 
 <!-- Release <%= version %> at <%= new Date() %> -->
