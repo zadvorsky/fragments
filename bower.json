@@ -1,0 +1,27 @@
+{
+  "name": "fragments",
+  "homepage": "",
+  "authors": [
+    "Szenia Zadvornykh <s.zadvornykh@gmail.com>"
+  ],
+  "description": "",
+  "main": "main.js",
+  "moduleType": [],
+  "license": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "three.js": "threejs#*",
+    "gsap": "^1.18.2",
+    "lodash": "^4.6.1"
+  },
+  "devDependencies": {
+    "dat.gui": "*"
+  }
+}
