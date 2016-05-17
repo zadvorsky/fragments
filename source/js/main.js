@@ -13,44 +13,42 @@
 //=require utils.js
 
 (function() {
-  function load() {
-    var loader = new THREELoader(function() {
-      initVue();
-    });
-
-    loader.loadFont('main_font', 'res/fonts/droid_sans_bold.typeface.js');
-  }
-
-  function initVue() {
+  var loader = new THREELoader(function() {
     Vue.use(VueRouter);
 
-    var scenes = [
+    var router = new VueRouter();
+    var items = [
       {name: '00'}, // view: IntroView
       {name: '01'},
       {name: '02'},
       {name: '03'}
     ];
 
-    var router = new VueRouter();
-
-    scenes.forEach(function(scene) {
-      router.on('/' + scene.name, {
-        component: (scene.view || GalleryItemView).extend({
+    items.forEach(function(item) {
+      router.on('/' + item.name, {
+        component: (item.view || GalleryItemView).extend({
           data: function(){
-            return scene;
+            return {
+              item: item,
+              assets: loader
+            };
           }
         })
       });
     });
 
+    router.redirect({
+      '*': '/00'
+    });
+
     router.start({
       data: function() {
         return {
-          scenes: scenes
+          items: items
         }
       }
     }, '#app');
-  }
+  });
 
-  load();
+  loader.loadFont('main_font', 'res/fonts/droid_sans_bold.typeface.js');
 })();

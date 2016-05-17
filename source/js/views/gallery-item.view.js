@@ -1,13 +1,13 @@
 var GalleryItemView = Vue.extend({
   created: function() {
-    console.log('view created', this.name);
-    this.threeScene = new window.scenes[this.name]();
+    console.log('view created', this.item.name);
+    this.threeScene = new window.scenes[this.item.name]();
   },
   ready: function() {
-    console.log('view ready', this.name);
+    console.log('view ready', this.item.name);
   },
   destroyed: function() {
-    console.log('view destroyed', this.name);
+    console.log('view destroyed', this.item.name);
   },
   route: {
     deactivate: function(transition) {
@@ -20,9 +20,6 @@ var GalleryItemView = Vue.extend({
         $root.$emit('scene_exit', {scene: scene});
         transition.next();
       });
-
-      //this.$root.$emit('scene_exit', {scene:this.threeScene.group});
-      //transition.next();
     },
     activate: function(transition) {
       var tl = new TimelineMax();
@@ -36,9 +33,6 @@ var GalleryItemView = Vue.extend({
       tl.add(function() {
         transition.next();
       });
-
-      //this.$root.$emit('scene_enter', {scene:this.threeScene.group});
-      //transition.next();
     },
     canReuse: false
   }

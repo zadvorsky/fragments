@@ -11,8 +11,8 @@
 
   <div class="navigation">
     <a class="navigation__item"
-       v-for="scene in scenes"
-       v-link="{ path: scene.name }">- {{ scene.name }} -</a>
+       v-for="item in items"
+       v-link="{ path: item.name }">- {{ item.name }} -</a>
   </div>
 
   <div class="content">
