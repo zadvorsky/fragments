@@ -1,7 +1,7 @@
 function THREERoot(params) {
   // defaults
   params = _.extend({
-    containerId:'three-container',
+    container:'#three-container',
     fov:60,
     zNear:1,
     zFar:10000,
@@ -17,7 +17,10 @@ function THREERoot(params) {
   // renderer
   this.renderer = new THREE.WebGLRenderer();
   this.renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
-  document.getElementById(params.containerId).appendChild(this.renderer.domElement);
+
+  var container = (typeof params.container === 'string') ? document.querySelector(params.container) : params.container;
+
+  container.appendChild(this.renderer.domElement);
 
   // camera
   this.camera = new THREE.PerspectiveCamera(

@@ -9,11 +9,18 @@
 
 <div id="app">
 
-  <div>
-    <a v-for="scene in scenes" v-link="{ path: scene.name }">{{ scene.name }}</a>
+  <div class="navigation">
+    <a class="navigation__item"
+       v-for="scene in scenes"
+       v-link="{ path: scene.name }">- {{ scene.name }} -</a>
   </div>
 
-  <router-view></router-view>
+  <div class="content">
+    <router-view></router-view>
+  </div>
+
+  <div id="three-container" v-three-view></div>
+
 </div>
 
 <script src="js/main.<%= jsExt %>"></script>

@@ -4,3 +4,26 @@ body {
   background: #000000;
   color: #ffffff;
 }
+
+.navigation {
+  position: absolute;
+  left: 0; top: 0;
+  z-index: 1;
+}
+
+.navigation__item {
+  display: block;
+  text-decoration: none;
+}
+
+.content {
+  position: absolute;
+  left: 0; top: 0;
+  z-index: 1;
+}
+
+#three-container {
+  position: absolute;
+  top: 0; left: 0;
+  bottom: 0; right: 0;
+}

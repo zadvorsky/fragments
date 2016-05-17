@@ -3,7 +3,13 @@
 //=require three/*.js
 //=require objects/*.js
 //=require controllers/*.js
+
+//=require scenes/scene.init.js
 //=require scenes/*.js
+
+//=require views/gallery-item.view.js
+//=require views/*.js
+
 //=require utils.js
 
 (function() {
@@ -18,39 +24,32 @@
   function initVue() {
     Vue.use(VueRouter);
 
-    var Intro = Vue.extend({});
-    var Default = Vue.extend({});
-
     var scenes = [
-      {name:'00', component:Intro},
-      {name:'01'},
-      {name:'02'}
+      {name: '00'}, // view: IntroView
+      {name: '01'},
+      {name: '02'},
+      {name: '03'}
     ];
 
-    //var App = Vue.extend({
-    //  data: function() {
-    //    return {scenes: [
-    //      {name:'00'},
-    //      {name:'01'},
-    //      {name:'02'}
-    //    ]};
-    //  }
-    //});
     var router = new VueRouter();
 
     scenes.forEach(function(scene) {
       router.on('/' + scene.name, {
-        component: scene.component || Default
+        component: (scene.view || GalleryItemView).extend({
+          data: function(){
+            return scene;
+          }
+        })
       });
     });
 
     router.start({
       data: function() {
         return {
-          scenes:scenes
+          scenes: scenes
         }
       }
-    }, '#app')
+    }, '#app');
   }
 
   load();
