@@ -1,7 +1,8 @@
 var GalleryItemView = Vue.extend({
   created: function() {
     console.log('view created', this.item.name);
-    this.threeScene = new window.scenes[this.item.name]();
+
+    this.threeScene = new window.scenes[this.item.name](this.assets);
   },
   ready: function() {
     console.log('view ready', this.item.name);

@@ -44,5 +44,29 @@ var utils = {
 
       return vec;
     }
-  })()
+  })(),
+
+  generateTextGeometry: function(text, params) {
+    var geometry = new THREE.TextGeometry(text, params);
+
+    geometry.computeBoundingBox();
+
+    var size = geometry.boundingBox.size();
+
+    var anchorX = size.x * -params.anchor.x;
+    var anchorY = size.y * -params.anchor.y;
+    var anchorZ = size.z * -params.anchor.z;
+    var matrix = new THREE.Matrix4().makeTranslation(anchorX, anchorY, anchorZ);
+
+    geometry.applyMatrix(matrix);
+
+    THREE.BAS.Utils.separateFaces(geometry);
+
+    return geometry;
+  }
+
+
+
+
+
 };

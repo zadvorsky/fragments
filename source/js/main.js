@@ -50,5 +50,5 @@
     }, '#app');
   });
 
-  loader.loadFont('main_font', 'res/fonts/droid_sans_bold.typeface.js');
+  loader.loadFont('droid_sans_bold', 'res/fonts/droid_sans_bold.typeface.js');
 })();
