@@ -5,7 +5,7 @@ window.scenes['01'] = (function() {
   }
   Scene.prototype = {
     init: function(assets) {
-      var textGeometry = utils.generateTextGeometry('PIECE BY PIECE', {
+      var textGeometry = utils.generateTextGeometry('UP IN SMOKE', {
         size: 14,
         height: 0,
         font: assets.get('droid_sans_bold'),
@@ -21,7 +21,7 @@ window.scenes['01'] = (function() {
 
       var tween = TweenMax.fromTo(textAnimation, 4,
         {animationProgress:0},
-        {animationProgress:1, ease:Power1.easeInOut, repeat:-1, yoyo:true}
+        {animationProgress:1, ease:Power1.easeInOut, repeat:-1, repeatDelay:1.0, yoyo:true}
       );
 
       this.tween = tween;
@@ -92,11 +92,11 @@ window.scenes['01'] = (function() {
 
       // ctrl
       var c0x = centroid.x + THREE.Math.randFloat(40, 120);
-      var c0y = centroid.y + size.height * THREE.Math.randFloat(0.0, 12.0);
+      var c0y = centroid.y + size.y * THREE.Math.randFloat(0.0, 12.0);
       var c0z = THREE.Math.randFloatSpread(120);
 
       var c1x = centroid.x + THREE.Math.randFloat(80, 120) * -1;
-      var c1y = centroid.y + size.height * THREE.Math.randFloat(0.0, 12.0);
+      var c1y = centroid.y + size.y * THREE.Math.randFloat(0.0, 12.0);
       var c1z = THREE.Math.randFloatSpread(120);
 
       for (v = 0; v < 9; v += 3) {
@@ -113,7 +113,7 @@ window.scenes['01'] = (function() {
       var x, y, z;
 
       x = centroid.x + THREE.Math.randFloatSpread(120);
-      y = centroid.y + size.height * THREE.Math.randFloat(4.0, 12.0);
+      y = centroid.y + size.y * THREE.Math.randFloat(4.0, 12.0);
       z = THREE.Math.randFloat(-20, 20);
 
       for (v = 0; v < 9; v += 3) {
@@ -126,8 +126,6 @@ window.scenes['01'] = (function() {
     var material = new THREE.BAS.BasicAnimationMaterial({
         shading: THREE.FlatShading,
         side: THREE.DoubleSide,
-        wireframe: true,
-        transparent: true,
         uniforms: {
           uTime: {type: 'f', value: 0}
         },
