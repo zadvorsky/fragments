@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <title>fragments</title>
@@ -21,10 +21,19 @@
 
   <div id="three-container" v-three-view></div>
 
-  <div class="tween-control" v-tween-progress-control="{ tween: active_tween }">
-    <div class="tween-control__track">
-      <div class="tween-control__head"></div>
-    </div>
+  <div class="tween-control">
+    <tween-play-control v-bind:tween="active_tween" inline-template>
+      <div class="tween-control__play-toggle" v-on:click="toggle">
+        <i class="icon-play" v-if="isPaused"></i>
+        <i class="icon-pause" v-if="!isPaused"></i>
+      </div>
+    </tween-play-control>
+
+    <tween-progress-control v-bind:tween="active_tween" inline-template>
+      <div class="tween-control__track">
+        <div class="tween-control__head"></div>
+      </div>
+    </tween-progress-control>
   </div>
 </div>
 

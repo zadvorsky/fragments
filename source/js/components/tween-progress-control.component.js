@@ -1,8 +1,10 @@
-Vue.directive('tween-progress-control', {
-  bind: function() {
-    var track = this.el.querySelector('.tween-control__track');
-    var head = this.el.querySelector('.tween-control__head');
-
+Vue.component('tween-progress-control', {
+  props: [
+    'tween'
+  ],
+  ready: function() {
+    var track = this.$el;
+    var head = this.$el.querySelector('.tween-control__head');
     var isDragging = false;
 
     var dHead = Draggable.create(head, {
@@ -76,11 +78,11 @@ Vue.directive('tween-progress-control', {
     // update
     TweenMax.ticker.addEventListener('tick', _.bind(function() {
       if (this.tween && !isDragging) {
-        TweenMax.set(head, {x:this.tween.progress() * track.clientWidth});
+        var w = head.getBoundingClientRect().width;
+        var x = this.tween.progress() * (track.clientWidth - w) + w * 0.5;
+
+        TweenMax.set(head, {x: x});
       }
     }, this));
-  },
-  update: function(newValue, oldValue) {
-    newValue.tween && (this.tween = newValue.tween);
   }
 });

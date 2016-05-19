@@ -8,6 +8,7 @@
 //=require scenes/*.js
 
 //=require directives/*.js
+//=require components/*.js
 
 //=require views/gallery-item.view.js
 //=require views/*.js
