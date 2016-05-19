@@ -5,20 +5,9 @@ window.scenes['00'] = (function() {
   }
   Scene.prototype = {
     init: function(assets) {
-      //var mesh = new THREE.Mesh(
-      //  new THREE.TetrahedronGeometry(100),
-      //  new THREE.MeshBasicMaterial({
-      //    color: 0xffffff,
-      //    wireframe: true
-      //  })
-      //);
-      //
-      //this.mesh = mesh;
-      //this.group.add(mesh);
-
       var textGeometry = utils.generateTextGeometry('PIECE BY PIECE', {
         size: 14,
-        height: 0,
+        height: 2,
         font: assets.get('droid_sans_bold'),
         weight: 'bold',
         style: 'normal',
@@ -35,6 +24,7 @@ window.scenes['00'] = (function() {
         {animationProgress:1, ease:Power1.easeInOut, repeat:-1, yoyo:true}
       );
 
+      this.tween = tween;
       this.group.add(textAnimation);
     },
     destroy: function() {

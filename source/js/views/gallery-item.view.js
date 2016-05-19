@@ -3,6 +3,7 @@ var GalleryItemView = Vue.extend({
     console.log('view created', this.item.name);
 
     this.threeScene = new window.scenes[this.item.name](this.assets);
+    this.$root.active_tween = this.threeScene.tween;
   },
   ready: function() {
     console.log('view ready', this.item.name);

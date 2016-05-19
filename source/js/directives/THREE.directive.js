@@ -4,7 +4,7 @@ Vue.directive('three-view', {
       container: this.el
     });
 
-    root.add(new THREE.AxisHelper(100));
+    root.add(new THREE.AxisHelper(50));
     root.camera.position.set(0, 0, 300);
 
     this.vm.$root.$on('scene_enter', function(e) {

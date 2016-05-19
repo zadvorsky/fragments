@@ -15,7 +15,9 @@ function THREERoot(params) {
   this.objects = {};
 
   // renderer
-  this.renderer = new THREE.WebGLRenderer();
+  this.renderer = new THREE.WebGLRenderer({
+    antialias:(window.devicePixelRatio === 1)
+  });
   this.renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
 
   var container = (typeof params.container === 'string') ? document.querySelector(params.container) : params.container;

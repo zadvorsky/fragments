@@ -7,10 +7,20 @@
 //=require scenes/scene.init.js
 //=require scenes/*.js
 
+//=require directives/*.js
+
 //=require views/gallery-item.view.js
 //=require views/*.js
 
 //=require utils.js
+
+// override
+THREE.ShapeUtils.triangulateShape = (function () {
+  var pnlTriangulator = new PNLTRI.Triangulator();
+  return function triangulateShape(contour, holes) {
+    return pnlTriangulator.triangulate_polygon([contour].concat(holes));
+  };
+})();
 
 (function() {
   var loader = new THREELoader(function() {
@@ -44,7 +54,8 @@
     router.start({
       data: function() {
         return {
-          items: items
+          items: items,
+          active_tween: null
         }
       }
     }, '#app');

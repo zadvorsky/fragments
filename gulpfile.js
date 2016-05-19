@@ -126,7 +126,8 @@ gulp.task('deploy', ['build'], shell.task([
 ]));
 
 gulp.task('serve', ['build'], shell.task([
-  'cd build; live-server'
+  'cd build',
+  'live-server'
 ]));
 
 gulp.task('default', ['serve', 'watch']);
