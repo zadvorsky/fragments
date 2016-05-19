@@ -21,7 +21,7 @@ window.scenes['00'] = (function() {
 
       var tween = TweenMax.fromTo(textAnimation, 4,
         {animationProgress:0},
-        {animationProgress:1, ease:Power1.easeInOut, repeat:-1, yoyo:true}
+        {animationProgress:1, ease:Power1.easeInOut, repeat:-1, repeatDelay:1, yoyo:true}
       );
 
       this.tween = tween;
