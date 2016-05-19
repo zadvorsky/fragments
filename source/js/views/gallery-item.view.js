@@ -2,8 +2,12 @@ var GalleryItemView = Vue.extend({
   created: function() {
     console.log('view created', this.item.name);
 
-    this.threeScene = new window.scenes[this.item.name](this.assets);
+    this.threeScene = window.sceneCache[this.item.name] ||  new window.Scenes[this.item.name](this.assets);
+    window.sceneCache[this.item.name] = this.threeScene;
+
     this.$root.active_tween = this.threeScene.tween;
+    this.$root.active_tween.progress(0);
+    this.$root.active_tween.paused(false);
   },
   ready: function() {
     console.log('view ready', this.item.name);
@@ -17,7 +21,7 @@ var GalleryItemView = Vue.extend({
       var $root = this.$root;
       var scene = this.threeScene.group;
 
-      tl.add(this.threeScene.hide());
+      //tl.add(this.threeScene.hide());
       tl.add(function() {
         $root.$emit('scene_exit', {scene: scene});
         transition.next();
@@ -31,7 +35,7 @@ var GalleryItemView = Vue.extend({
       tl.add(function() {
         $root.$emit('scene_enter', {scene: scene});
       });
-      tl.add(this.threeScene.show());
+      //tl.add(this.threeScene.show());
       tl.add(function() {
         transition.next();
       });

@@ -1,4 +1,4 @@
-window.scenes['01'] = (function() {
+window.Scenes['01'] = (function() {
   function Scene(assets) {
     this.group = new THREE.Group();
     this.init(assets);
@@ -27,9 +27,7 @@ window.scenes['01'] = (function() {
       this.tween = tween;
       this.group.add(textAnimation);
     },
-    destroy: function() {
-      
-    },
+
     show: function() {
       var mesh = this.group;
 

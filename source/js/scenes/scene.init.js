@@ -1,1 +1,2 @@
-window.scenes = {};
+window.Scenes = {};
+window.sceneCache = {};

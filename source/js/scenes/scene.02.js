@@ -1,10 +1,10 @@
-window.scenes['02'] = function() {
+window.Scenes['02'] = function() {
   this.group = new THREE.Group();
 
   this.init();
 };
 
-window.scenes['02'].prototype = {
+window.Scenes['02'].prototype = {
   init: function() {
     var mesh = new THREE.Mesh(
       new THREE.BoxGeometry(50, 50, 50),

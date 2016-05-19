@@ -1,10 +1,10 @@
-window.scenes['03'] = function() {
+window.Scenes['03'] = function() {
   this.group = new THREE.Group();
 
   this.init();
 };
 
-window.scenes['03'].prototype = {
+window.Scenes['03'].prototype = {
   init: function() {
     var mesh = new THREE.Mesh(
       new THREE.TorusKnotGeometry(50, 8),
